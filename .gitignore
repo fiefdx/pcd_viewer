@@ -13,8 +13,10 @@
 *.pid
 *.pyc
 *.conf
+lib/carrayfilter.c
 
 # ignore dirs
-hostswitcher.egg-info
+
+pcd_viewer.egg-info
 dist
 build
