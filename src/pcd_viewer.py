@@ -44,7 +44,6 @@ def load_pcd_content(content, w = 2, color_mode = "intensity", intensity_filter 
 
     pc.pc_data.dtype = numpy.dtype("<f4")
     v, c = arrayfilter.vertices_filter(pc.pc_data.reshape((pc.points, 4)))
-    print "test"
     for i in xrange(len(v)):
         pointCloud.addVertex(i)
         pointCloud.closePrimitive()

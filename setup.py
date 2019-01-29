@@ -6,13 +6,10 @@ Created on 2019-01-25
 @author: fiefdx
 '''
 
-# from setuptools import setup, Extension
-from distutils.core import setup
-from distutils.extension import Extension
+from setuptools import setup, Extension
 
 from Cython.Distutils import build_ext
 import numpy
-import shutil
 
 kwargs = {}
 kwargs["name"] = "pcd_viewer"
@@ -30,6 +27,5 @@ carrayfilter = Extension(
 
 kwargs["cmdclass"] = {'build_ext': build_ext}
 kwargs["ext_modules"] = [carrayfilter]
+kwargs["entry_points"] = {'console_scripts': ['pcdv = pcd_viewer:main']}
 setup(**kwargs)
-
-shutil.copy2("./pcdv", "/usr/local/bin/pcdv")
