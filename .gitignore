@@ -13,7 +13,7 @@
 *.pid
 *.pyc
 *.conf
-lib/carrayfilter.c
+lib/varrayfilter.c
 
 # ignore dirs
 

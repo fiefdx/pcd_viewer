@@ -7,6 +7,8 @@ Created on 2019-01-25
 
 import os
 import sys
+import logging
+import traceback
 
 from direct.showbase.ShowBase import ShowBase
 from panda3d.core import GeomNode, NodePath
@@ -18,7 +20,9 @@ from panda3d.core import loadPrcFileData
 import pypcd
 import numpy
 
-from pcd_viewer import arrayfilter
+import arrayfilter
+
+LOG = logging.getLogger(__name__)
 
 
 loadPrcFileData('', 'win-size 1280 720')
@@ -40,6 +44,7 @@ def load_pcd_content(content, w = 2, color_mode = "intensity", intensity_filter 
 
     pc.pc_data.dtype = numpy.dtype("<f4")
     v, c = arrayfilter.vertices_filter(pc.pc_data.reshape((pc.points, 4)))
+    print "test"
     for i in xrange(len(v)):
         pointCloud.addVertex(i)
         pointCloud.closePrimitive()
@@ -79,7 +84,7 @@ class ViewerApp(ShowBase):
 def main():
     try:
         argv_n = len(sys.argv)
-        LOG.debug("argv_n: %s", argv_n)
+        print "argv_n: %s" % argv_n
         if argv_n < 1:
             print "missing parameter! So, exit the program now."
             sys.exit()
@@ -89,7 +94,8 @@ def main():
         app = ViewerApp(pcd_path)
         app.run()
     except Exception, e:
-        LOG.exception(e)
+        print e
+        traceback.print_exc()
 
 
 if __name__ == "__main__":

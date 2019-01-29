@@ -7,10 +7,10 @@ Created on 2018-05-02
 
 import logging
 
-import carrayfilter
+import varrayfilter
 
 LOG = logging.getLogger(__name__)
 
 
 def vertices_filter(data):
-    return carrayfilter.vertices_filter(data)
+    return varrayfilter.vertices_filter(data)
